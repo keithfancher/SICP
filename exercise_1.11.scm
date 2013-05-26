@@ -4,10 +4,7 @@
     n
     (+ (dumb-func (- n 1))
        (* 2 (dumb-func (- n 2)))
-       (* 3 (dumb-func (- n 3)))
-    )
-  )
-)
+       (* 3 (dumb-func (- n 3))))))
 
 
 ; Testing:
