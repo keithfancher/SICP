@@ -5,10 +5,11 @@
 ; Rational number... not an actual rat :(
 ; Should handle numerator, denominator, or both being negative.
 (define (make-rat n d)
-  (cons (if (< (/ n d) 0)
-          (negify n)
-          (abs n))
-        (abs d)))
+  (let ((g (gcd n d))) ; for simplification
+    (cons (if (< (/ n d) 0) ; normalizing sign
+            (negify (/ n g))
+            (abs (/ n g)))
+          (abs (/ d g)))))
 
 ; Show numerator of rat.
 (define (numer x) (car x))
@@ -35,4 +36,7 @@
 (newline)
 (define other-neg-one-half (make-rat 1 -2))
 (print-rat other-neg-one-half) ; also -1/2
+(newline)
+(define yet-other-neg-one-half (make-rat 3 -6))
+(print-rat yet-other-neg-one-half) ; also -1/2
 (newline)
